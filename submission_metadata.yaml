@@ -1,0 +1,89 @@
+# Redrob Hackathon 2026 — Submission Metadata
+# Team: Lazy4
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "lazy4"
+
+primary_contact:
+  name: "Rakshit"
+  email: "rakshit@lazy4.dev"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Rakshit"
+    email: "rakshit@lazy4.dev"
+    role: "Team Lead / ML Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/lazy4/rawcruit-ranker"
+
+sandbox_link: "https://huggingface.co/spaces/lazy4/rawcruit-ranker"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Local Linux / Ubuntu 22.04"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Ubuntu 22.04 LTS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for architectural discussion, code review, and debugging.
+  No candidate data was fed to any LLM during ranking.
+  All ranking logic is deterministic, CPU-only, zero API calls at inference.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  RAWCRUIT: A 5-component hybrid scoring system designed around the specific
+  signals the JD explicitly calls out.
+
+  Components (weights):
+    1. Title + Career Match (35%) — semantic role matching + career history
+       analysis. Explicitly handles the keyword-stuffer trap: candidates with
+       all AI keywords but non-AI titles score near-zero. Consulting-only
+       careers are penalized 72%. Product-company tenure is rewarded.
+    2. Skill Depth Score (28%) — endorsement-weighted, duration-trust adjusted.
+       Skills listed with <3 months duration get 92% penalty (anti-stuffing).
+       Assessment scores on platform add bonus.
+    3. Experience Quality (16%) — targets JD's stated 5-9yr band. Title-hopping
+       (<18 months per role) is penalized. Pure-research careers without
+       production evidence penalized 32%.
+    4. Location (12%) — Pune/Noida/Hyderabad/NCR preferred per JD.
+    5. Education Tier (9%) — Tier-1 institutions with CS/AI fields rewarded.
+    
+  Behavioral Multiplier (×0.05–1.55): Applied on top of base score.
+  Inactive >180 days = −22%, open_to_work = +12%, high response rate = +22%.
+  A candidate inactive 6+ months with 5% response rate scores near-zero.
+
+  Runtime: ~10 seconds for 100K candidates on CPU. Zero dependencies beyond
+  Python stdlib.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

@@ -1,0 +1,5 @@
+# RAWCRUIT — Team Lazy4
+# Zero external dependencies for ranking (stdlib only)
+# Optional: for running the analysis notebook
+python>=3.9
+# No pip packages required for rank.py
