@@ -7,21 +7,33 @@
 team_name: "lazy4"
 
 primary_contact:
-  name: "Rakshit"
+  name: "Rakshit Chaudhary"
   email: "rakshit@lazy4.dev"
-  phone: "+91-XXXXXXXXXX"
+  phone: "+91-9456226756"
 
 team_members:
-  - name: "Rakshit"
+  - name: "Rakshit Chaudhary"
     email: "rakshit@lazy4.dev"
-    role: "Team Lead / ML Engineer"
+    role: "Team Lead | Full Stack AI Engineer | ML Engineer | System Architect"
+
+  - name: "Jashan Kainth"
+    email: "jashankainth369@gmail.com"
+    role: "AI/ML Engineer | NLP Engineer | Data Scientist"
+
+  - name: "Rajat"
+    email: "rrajat_be24@thapar.edu"
+    role: "Backend Engineer | Cloud & Database Engineer | API Developer"
+
+  - name: "Ashish Bhagat"
+    email: "abhagat_be24@thapar.edu"
+    role: "Frontend Engineer | UI/UX Designer | React Developer"
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
-github_repo: "https://github.com/lazy4/rawcruit-ranker"
+github_repo: "https://github.com/Rakshit05code/RawCruit"
 
-sandbox_link: "https://huggingface.co/spaces/lazy4/rawcruit-ranker"
+sandbox_link: "https://huggingface.co/spaces/rakshit-codes/rawcruit-lazy4"
 
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
